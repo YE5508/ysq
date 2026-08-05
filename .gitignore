@@ -5,3 +5,7 @@ MDK-ARM/*.uvguix.*
 # Keil 编译输出
 MDK-ARM/keil_proj_demo/
 MDK-ARM/startup_stm32f405xx.lst
+
+# .vscode
+.vscode/
+

@@ -51,7 +51,7 @@
 /* #define 是宏定义：编译前会把名字替换成后面的内容 */
 #define LED_COUNT   4U    /* 板载 LED 数量，U 表示 unsigned 无符号数 */
 #define BLINK_TIMES 5U    /* 每颗 LED 闪烁次数 */
-#define DELAY_MS    250U  /* LED 亮/灭持续时间，单位毫秒 */
+#define DELAY_MS    125U  /* LED 亮/灭持续时间，单位毫秒 */
 #define BEEP_MS     120U  /* 蜂鸣器响一声的时长 */
 /* USER CODE END PD */
 
@@ -91,7 +91,8 @@ int main(void)
   /* 局部变量：只能在 main 函数内使用 */
   uint8_t  current_led = 1U;              /* 当前要操作的 LED 编号 */
   uint16_t blink_times = BLINK_TIMES;/* 每颗 LED 闪烁次数 */
-  uint32_t delay_ms    = DELAY_MS;   /* 亮/灭延时 */
+  uint32_t delay_ms    =
+  DELAY_MS;   /* 亮/灭延时 */
   const uint8_t led_count = LED_COUNT; /* const 表示该变量不允许修改 */
   /* USER CODE END 1 */
 
