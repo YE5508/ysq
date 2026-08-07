@@ -9,3 +9,8 @@ MDK-ARM/startup_stm32f405xx.lst
 # .vscode
 .vscode/
 
+# obsidian
+.obsidian/
+
+
+
