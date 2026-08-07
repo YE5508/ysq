@@ -129,11 +129,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    current_led = 2U; /* 练习点：改成 2U，观察从哪颗 LED 开始 */
+    current_led = 1U; /* 练习点：改成 2U，观察从哪颗 LED 开始 */
     beep(BEEP_MS);
     /* while 循环：条件成立就反复执行 {} 里的代码 */
     while (current_led <= led_count)
     {
+      blink_times = current_led;
       blink_led(current_led, blink_times, delay_ms);
       current_led++; /* 等价于 current_led = current_led + 1 */
     }
@@ -143,7 +144,7 @@ int main(void)
     /* if / else 判断：让延时每次变快一点，到 100 后重新回到初始值 */
     if (delay_ms > 100U)
     {
-      delay_ms += 20U; /* 练习点：改成 += 20U 看速度变化方向 */
+      delay_ms -= 20U; /* 练习点：改成 += 20U 看速度变化方向 */
     }
     else
     {
