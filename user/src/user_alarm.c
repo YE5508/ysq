@@ -35,26 +35,26 @@ void beep(uint32_t beep_ms)
   buzzer_off();         /* 关闭蜂鸣器 */
 }
 
-void waterfall_led(uint8_t start_led,uint8_t led_count, uint16_t blink_times, uint32_t delay_ms,uint32_t delay_variation_ms,uint8_t beep_on)
+void waterfall_led(uint8_t start_led,uint8_t led_count, uint16_t blink_times, uint32_t* delay_ms_p,uint32_t delay_variation_ms,uint8_t beep_on)
 {
     /* while 循环：条件成立就反复执行 {} 里的代码 */
     while (start_led <= led_count)
     {
         blink_times = 1;
-        blink_led(start_led, blink_times, delay_ms);
+        blink_led(start_led, blink_times, *delay_ms_p);
         if(beep_on == BEEP_ON)//判断是否在灯间隔闪烁时响起蜂鸣器
         {
-            beep(delay_ms);
+            beep(*delay_ms_p);
         }
         start_led++; /* 等价于 start_led = current_led + 1 */
         /* if / else 判断：让延时每次变快一点，到 100 后重新回到初始值 */
-        if (delay_ms > 100U)
+        if (*delay_ms_p > 100U)
         {
-            delay_ms -= delay_variation_ms;
+            *delay_ms_p -= delay_variation_ms;
         }
         else
         {
-            delay_ms = DELAY_MS;
+            *delay_ms_p = DELAY_MS;
         }
     }
 }
@@ -62,7 +62,8 @@ void waterfall_led(uint8_t start_led,uint8_t led_count, uint16_t blink_times, ui
 
 void alarm_sys_func(uint8_t mode,uint16_t times)
 {
-    uint16_t delay_ms = DELAY_MS;
+    uint32_t delay_ms = DELAY_MS;
+    uint32_t *delay_ms_p = &delay_ms;
     switch (mode)
     {
     case MODE_STANDBY:
@@ -71,7 +72,7 @@ void alarm_sys_func(uint8_t mode,uint16_t times)
     case MODE_RUNNING:
         for (int i = 0 ;i < times;i++)
         {
-            waterfall_led(1U,LED_COUNT,BLINK_TIMES,DELAY_MS,0,0);
+            waterfall_led(1U,LED_COUNT,BLINK_TIMES,delay_ms_p,0,0);
         } 
         
         break;
@@ -80,8 +81,7 @@ void alarm_sys_func(uint8_t mode,uint16_t times)
         for (int i = 0; i < times;i++)
         {
             
-            waterfall_led(1U,LED_COUNT,BLINK_TIMES,delay_ms,DELAY_VARIATION_MS,BEEP_ON);
-            delay_ms -= DELAY_VARIATION_MS;
+            waterfall_led(1U,LED_COUNT,BLINK_TIMES,delay_ms_p,DELAY_VARIATION_MS,BEEP_ON);
         }
         
         break;

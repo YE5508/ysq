@@ -25,7 +25,7 @@ extern "C"
     /* 函数声明（原型）：告诉编译器函数名、参数和返回值，定义在下方 USER CODE 4 */
     void blink_led(uint8_t led_num, uint16_t times, uint32_t delay_ms);
     void beep(uint32_t beep_ms);
-    void waterfall_led(uint8_t start_led,uint8_t led_count, uint16_t blink_times, uint32_t delay_ms,uint32_t delay_variation_ms,uint8_t beep_on);
+    void waterfall_led(uint8_t start_led,uint8_t led_count, uint16_t blink_times, uint32_t* delay_ms_p,uint32_t delay_variation_ms,uint8_t beep_on);
     void alarm_sys_func(uint8_t mode,uint16_t times);
 #ifdef __cplusplus
 }
