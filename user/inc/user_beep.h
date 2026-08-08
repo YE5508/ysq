@@ -10,7 +10,6 @@
 extern "C"
 {
 #endif
-
     /* 上电时让蜂鸣器按“长-短-短”响三次 */
     void user_beep(void);
 

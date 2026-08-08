@@ -19,6 +19,7 @@ extern "C" {
 #define LED2_PIN      GPIO_PIN_4
 #define LED3_PIN      GPIO_PIN_5
 #define LED4_PIN      GPIO_PIN_6
+#define LED_COUNT   4U    /* 板载 LED 数量，U 表示 unsigned 无符号数 */
 
 /* 函数声明：LED 编号约定为 1~4，分别对应 PB3~PB6 */
 void led_on(uint8_t led_num);

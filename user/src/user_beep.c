@@ -4,12 +4,13 @@
  *          加入 Keil 工程后，复位即可听到效果。
  */
 #include "user_beep.h"
-#include "buzzer.h"
 #include "stm32h7xx_hal.h"
 
 #define USER_BEEP_LONG_MS   300U  /* 长音时长 */
 #define USER_BEEP_SHORT_MS  100U  /* 短音时长 */
 #define USER_BEEP_GAP_MS    100U  /* 两次叫声之间的间隔 */
+
+
 
 void user_beep(void)
 {
@@ -31,3 +32,4 @@ void user_beep(void)
     buzzer_off();
     HAL_Delay(USER_BEEP_GAP_MS);
 }
+
